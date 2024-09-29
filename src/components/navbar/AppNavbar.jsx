@@ -48,28 +48,28 @@ function AppNavbar(props) {
                 {!isUserLoggedIn ? (
                     <div>
                         <NavLink to="/register" style={{ textDecoration: "none" }}>
-                            <CButton 
-                                style={{ 
-                                    backgroundColor: "#003366", 
+                            <CButton
+                                style={{
+                                    backgroundColor: "#003366",
                                     border: 'none',
                                     borderRadius: '20px',
                                     padding: '8px 16px',
-                                    color: '#ffffff' 
-                                }} 
+                                    color: '#ffffff'
+                                }}
                                 className="me-2"
                             >
                                 Sign up
                             </CButton>
                         </NavLink>
                         <NavLink to="/login" style={{ textDecoration: "none" }}>
-                            <CButton 
-                                style={{ 
-                                    backgroundColor: "#003366", 
+                            <CButton
+                                style={{
+                                    backgroundColor: "#003366",
                                     border: 'none',
                                     borderRadius: '20px',
                                     padding: '8px 16px',
-                                    color: '#ffffff' 
-                                }} 
+                                    color: '#ffffff'
+                                }}
                             >
                                 Login
                             </CButton>
@@ -83,7 +83,7 @@ function AppNavbar(props) {
                         <NavLink to="/packages" style={{ textDecoration: "none" }}>
                             <CDropdownItem style={{ color: "#003366", borderRadius: '5px', padding: '10px 15px' }}>Packages</CDropdownItem>
                         </NavLink>
-                        
+
                         {/* Notification Dropdown */}
                         <CDropdown alignment="end" className="me-3">
                             <CDropdownToggle color="secondary" style={{ backgroundColor: 'transparent', border: 'none', position: 'relative' }}>
