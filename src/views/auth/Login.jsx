@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../assets/images/loginSS.gif";
+
 import { useState } from "react";
 import { Route, useNavigate , Navigate } from "react-router-dom";
 
