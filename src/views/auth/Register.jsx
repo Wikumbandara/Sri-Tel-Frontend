@@ -1,5 +1,4 @@
 import React from "react";
-import image from "../../assets/images/SignUp.png"
 import { useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
 
@@ -12,9 +11,7 @@ import {
     CRow,
     CCard,
     CCardBody,
-    CFormSelect,
     CSpinner,
-    CCardImageOverlay,
 } from "@coreui/react";
 import { toast } from "react-toastify";
 
@@ -97,7 +94,7 @@ function Register() {
         }
 
         if (!v_required(registerForm.accNumber)) {
-            accNumberError = "Address can not be empty.";
+            accNumberError = "Account Number can not be empty.";
         }
 
         if (!v_required(registerForm.email)) {
@@ -174,7 +171,7 @@ function Register() {
                         error.message ||
                         error.toString();
 
-                    // After recieving the server request
+                    // After receiving the server request
                     toast.error(res);
                     setLoading(false);
                 }
@@ -183,10 +180,9 @@ function Register() {
     };
 
     return (
-        <div className=" bg-light d-flex flex-row align-items-center h-100">
+        <div className="bg-light d-flex flex-row align-items-center h-100">
             <CContainer className="d-flex">
                 <CRow className="justify-content-center">
-                    
                     <CCol md={5}>
                         <CCard className="mx-4">
                             <CCardBody className="p-4">
@@ -199,99 +195,89 @@ function Register() {
                                     <CCol md={12}>
                                         <CFormInput
                                             type="text"
-                                            id="validationServer01"
                                             name="username"
                                             label="Username"
                                             onChange={onUpdateInput}
                                             value={registerForm.username}
                                             feedback={registerFormErrors.usernameError}
-                                            invalid={registerFormErrors.usernameError ? true : false}
+                                            invalid={!!registerFormErrors.usernameError}
                                         />
                                     </CCol>
                                     <CCol md={6}>
                                         <CFormInput
                                             type="text"
-                                            id="validationServer01"
                                             name="firstName"
                                             label="First name"
                                             onChange={onUpdateInput}
                                             value={registerForm.firstName}
                                             feedback={registerFormErrors.firstNameError}
-                                            invalid={registerFormErrors.firstNameError ? true : false}
+                                            invalid={!!registerFormErrors.firstNameError}
                                         />
                                     </CCol>
                                     <CCol md={6}>
                                         <CFormInput
                                             type="text"
-                                            id="validationServer01"
                                             name="lastName"
                                             label="Last name"
                                             onChange={onUpdateInput}
                                             value={registerForm.lastName}
                                             feedback={registerFormErrors.lastNameError}
-                                            invalid={registerFormErrors.lastNameError ? true : false}
+                                            invalid={!!registerFormErrors.lastNameError}
                                         />
                                     </CCol>
                                     <CCol md={12}>
                                         <CFormInput
                                             type="text"
-                                            id="validationServer01"
                                             name="phone"
                                             label="Phone"
                                             onChange={onUpdateInput}
                                             value={registerForm.phone}
                                             feedback={registerFormErrors.phoneError}
-                                            invalid={registerFormErrors.phoneError ? true : false}
+                                            invalid={!!registerFormErrors.phoneError}
                                         />
                                     </CCol>
                                     <CCol md={12}>
                                         <CFormInput
                                             type="text"
-                                            id="validationServer01"
                                             name="accNumber"
                                             label="Account Number"
                                             onChange={onUpdateInput}
                                             value={registerForm.accNumber}
                                             feedback={registerFormErrors.accNumberError}
-                                            invalid={registerFormErrors.accNumberError ? true : false}
+                                            invalid={!!registerFormErrors.accNumberError}
                                         />
                                     </CCol>
                                     <CCol md={12}>
                                         <CFormInput
                                             type="text"
-                                            id="validationServer01"
                                             name="email"
                                             label="Email"
                                             onChange={onUpdateInput}
                                             value={registerForm.email}
                                             feedback={registerFormErrors.emailError}
-                                            invalid={registerFormErrors.emailError ? true : false}
+                                            invalid={!!registerFormErrors.emailError}
                                         />
                                     </CCol>
                                     <CCol md={6}>
                                         <CFormInput
                                             type="password"
-                                            id="validationServer01"
                                             name="password"
                                             label="Password"
                                             onChange={onUpdateInput}
                                             value={registerForm.password}
                                             feedback={registerFormErrors.passwordError}
-                                            invalid={registerFormErrors.passwordError ? true : false}
+                                            invalid={!!registerFormErrors.passwordError}
                                         />
                                     </CCol>
                                     <CCol md={6}>
                                         <CFormInput
                                             type="password"
-                                            id="validationServer01"
                                             name="confirmPassword"
                                             label="Confirm Password"
                                             onChange={onUpdateInput}
                                             value={registerForm.confirmPassword}
                                             feedback={registerFormErrors.confirmPasswordError}
-                                            invalid={
-                                                registerFormErrors.confirmPasswordError ? true : false
-                                            }
+                                            invalid={!!registerFormErrors.confirmPasswordError}
                                         />
                                     </CCol>
 
@@ -301,7 +287,7 @@ function Register() {
                                             className="py-2"
                                             disabled={loading}
                                             onClick={handleSubmit}
-                                            style={{ backgroundColor: "bg-blue-1000",border:"#66cccc" }}
+                                            style={{ backgroundColor: "#3D4E8B", border: "#66cccc" }}
                                         >
                                             <div className="text-white">
                                                 Register {loading && <CSpinner size="sm" />}
@@ -311,13 +297,6 @@ function Register() {
                                 </CForm>
                             </CCardBody>
                         </CCard>
-                    </CCol>
-                    <CCol md={7}>
-                        <div className="text-center mt-4">
-                            <img alt="Responsive image" src={image}  className="img-fluid" 
-                            style={{width:"500px",marginBottom:"0px"}}
-                            />
-                        </div>
                     </CCol>
                 </CRow>
             </CContainer>

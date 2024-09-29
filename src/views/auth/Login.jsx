@@ -1,8 +1,5 @@
-import React from "react";
-
-import { useState } from "react";
-import { Route, useNavigate , Navigate } from "react-router-dom";
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     CForm,
     CCol,
@@ -17,21 +14,17 @@ import {
 import { toast } from "react-toastify";
 
 import { v_email, v_required } from "../../utils/validator";
-
 import userService from "../../services/userService";
 
 function Login() {
-    // For the server side requests and responses
     const [loading, setLoading] = useState(false);
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
-    // Form data
     const [loginForm, setLoginForm] = useState({
         email: "",
         password: "",
     });
 
-    // Update the form data while input
     const onUpdateInput = (e) => {
         setLoginForm((prev) => ({
             ...prev,
@@ -39,15 +32,11 @@ function Login() {
         }));
     };
 
-    // For data errors
     const [loginFormErrors, setLoginFormErrors] = useState({
         emailError: "",
         passwordError: "",
     });
 
-    // Validate the data and
-    // If valid send to the server
-    // else show the errors
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -55,26 +44,22 @@ function Login() {
         let passwordError = "";
 
         if (!v_required(loginForm.email)) {
-            emailError = "Email can not be empty.";
+            emailError = "Email cannot be empty.";
         } else if (!v_email(loginForm.email)) {
             emailError = "Email is not valid.";
         }
 
         if (!v_required(loginForm.password)) {
-            passwordError = "Password can not be empty.";
+            passwordError = "Password cannot be empty.";
         }
 
-        // If errors exist, show errors
         setLoginFormErrors({
             emailError,
             passwordError,
         });
 
-        // If no errors exist, send to the server
         if (!(emailError || passwordError)) {
-            // Sending to the server
             setLoading(true);
-
             const payload = {
                 email: loginForm.email,
                 password: loginForm.password,
@@ -87,13 +72,11 @@ function Login() {
                         sessionStorage.setItem("token", res.token);
                         sessionStorage.setItem("id", res.id);
                         navigate("/");
-                        
                     } else if (res.type === "BAD") {
                         toast.error(res.message);
                     }
 
                     setLoading(false);
-                    navigate("/");
                 },
                 (error) => {
                     const res =
@@ -102,8 +85,6 @@ function Login() {
                             error.response.data.message) ||
                         error.message ||
                         error.toString();
-
-                    // After recieving the server request
                     toast.error(res);
                     setLoading(false);
                 }
@@ -112,71 +93,68 @@ function Login() {
     };
 
     return (
-        <div className="bg-light d-flex flex-row align-items-center ">
+        <div className="bg-light d-flex flex-row align-items-center vh-100">
             <CContainer>
-                <CRow className="justify-content-center mt-5">
-                    
-                    <CCol md={5}>
-                        <CCard className="mx-4">
-                            <CCardBody className="p-2">
-                                <h1 className="text-center pt-4">Login</h1>
-                                <p className="text-medium-emphasis text-center" style={{color:"#6B7280"}}>
+                <CRow className="justify-content-center">
+                    <CCol md={6} lg={4}>
+                        <CCard className="shadow-lg">
+                            <CCardBody className="p-4">
+                                <h1 className="text-center mb-4">Login</h1>
+                                <p className="text-muted text-center mb-4">
                                     Enter your login details
                                 </p>
-                                <CForm className="row g-4 p-4">
+                                <CForm onSubmit={handleSubmit}>
                                     <CCol md={12}>
                                         <CFormInput
-                                            type="text"
-                                            id="validationServer01"
+                                            type="email"
                                             name="email"
                                             label="Email"
                                             onChange={onUpdateInput}
                                             value={loginForm.email}
                                             feedback={loginFormErrors.emailError}
-                                            invalid={loginFormErrors.emailError ? true : false}
+                                            invalid={!!loginFormErrors.emailError}
                                         />
                                     </CCol>
-                                    <CCol md={12}>
+                                    <CCol md={12} className="mt-3">
                                         <CFormInput
                                             type="password"
-                                            id="validationServer01"
                                             name="password"
                                             label="Password"
                                             onChange={onUpdateInput}
                                             value={loginForm.password}
                                             feedback={loginFormErrors.passwordError}
-                                            invalid={loginFormErrors.passwordError ? true : false}
+                                            invalid={!!loginFormErrors.passwordError}
                                         />
                                     </CCol>
-                                    <CCol md={12}>
-                                    <div className="d-grid">
-                                        <CButton
-                                            color="primary"
-                                            className="py-2"
-                                            disabled={loading}
-                                            onClick={handleSubmit}
-                                            style={{ backgroundColor: "bg-blue-1000", border: "#66cccc" }}
-                                        >
-                                            <div className="text-white font-bold">
-                                                Login {loading && <CSpinner size="sm" />}
-                                            </div>
-                                        </CButton>
-                                    </div>
-                                        <div className="forgot-dev p-4">
-                                            <a class="forgot" >
-                                                <p className="text-center" style={{ color: "#6B7280", textDecoration: "none" }}>
-                                                    forgot password ?
-                                                </p>
+                                    <CCol md={12} className="mt-4">
+                                        <div className="d-grid">
+                                            <CButton
+                                                color="primary"
+                                                className="py-2"
+                                                disabled={loading}
+                                                type="submit"
+                                                style={{ backgroundColor: "#003366" }}
+                                            >
+                                                {loading ? (
+                                                    <div className="d-flex align-items-center justify-content-center">
+                                                        <CSpinner size="sm" className="me-2" />
+                                                        Logging in...
+                                                    </div>
+                                                ) : (
+                                                    "Login"
+                                                )}
+                                            </CButton>
+                                        </div>
+                                        <div className="text-center mt-3">
+                                            <a href="#" style={{ color: "#6B7280", textDecoration: "none" }}>
+                                                Forgot password?
                                             </a>
                                         </div>
                                     </CCol>
-                                    
-                                    
                                 </CForm>
                             </CCardBody>
                         </CCard>
                     </CCol>
-                    
                 </CRow>
             </CContainer>
         </div>
