@@ -115,20 +115,15 @@ function Login() {
         <div className="bg-light d-flex flex-row align-items-center ">
             <CContainer>
                 <CRow className="justify-content-center mt-5">
-                    <CCol md={7}>
-                        <div className="text-center" style={{marginBottom:"10px"}}>
-                            <img alt="Responsive image" src={image}  className="img-fluid"
-                             />
-                        </div>
-                    </CCol>
+                    
                     <CCol md={5}>
                         <CCard className="mx-4">
                             <CCardBody className="p-2">
-                                <h1 className="text-center">Login</h1>
-                                <p className="text-medium-emphasis text-center" style={{color:"#ff6600"}}>
-                                    Please enter your credentials
+                                <h1 className="text-center pt-4">Login</h1>
+                                <p className="text-medium-emphasis text-center" style={{color:"#6B7280"}}>
+                                    Enter your login details
                                 </p>
-                                <CForm className="row g-4">
+                                <CForm className="row g-4 p-4">
                                     <CCol md={12}>
                                         <CFormInput
                                             type="text"
@@ -154,35 +149,34 @@ function Login() {
                                         />
                                     </CCol>
                                     <CCol md={12}>
-                                        <div className="forgot-dev">
-                                            <a class="forgot" >
-                                                <p className="text-center" style={{ color: "#ff6600", textDecoration: "none" }}>
-                                                    forgot password ?
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </CCol>
-                                    <CCol md={12}>
-                                        <hr />{" "}
-                                        <p className="text-medium-emphasis text-center">or</p>
-                                    </CCol>
                                     <div className="d-grid">
                                         <CButton
                                             color="primary"
                                             className="py-2"
                                             disabled={loading}
                                             onClick={handleSubmit}
-                                            style={{ backgroundColor: "#66cccc", border: "#66cccc" }}
+                                            style={{ backgroundColor: "bg-blue-1000", border: "#66cccc" }}
                                         >
-                                            <div className="text-white">
+                                            <div className="text-white font-bold">
                                                 Login {loading && <CSpinner size="sm" />}
                                             </div>
                                         </CButton>
                                     </div>
+                                        <div className="forgot-dev p-4">
+                                            <a class="forgot" >
+                                                <p className="text-center" style={{ color: "#6B7280", textDecoration: "none" }}>
+                                                    forgot password ?
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </CCol>
+                                    
+                                    
                                 </CForm>
                             </CCardBody>
                         </CCard>
                     </CCol>
+                    
                 </CRow>
             </CContainer>
         </div>
