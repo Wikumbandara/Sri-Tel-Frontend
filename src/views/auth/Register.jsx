@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../assets/images/Signupg.gif"
+import image from "../../assets/images/SignUp.png"
 import { useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
 
@@ -186,18 +186,12 @@ function Register() {
         <div className=" bg-light d-flex flex-row align-items-center h-100">
             <CContainer className="d-flex">
                 <CRow className="justify-content-center">
-                    <CCol md={7}>
-                        <div className="text-center">
-                            <img alt="Responsive image" src={image}  className="img-fluid" 
-                            style={{width:"700px",marginBottom:"10px"}}
-                            />
-                        </div>
-                    </CCol>
+                    
                     <CCol md={5}>
                         <CCard className="mx-4">
                             <CCardBody className="p-4">
                                 <h1 className="text-center">Sign up</h1>
-                                <p className="text-medium-emphasis text-center" style={{color:"#ff6600"}}>
+                                <p className="text-medium-emphasis text-center" style={{color:"#6B7280"}}>
                                     Please enter your details
                                 </p>
 
@@ -307,7 +301,7 @@ function Register() {
                                             className="py-2"
                                             disabled={loading}
                                             onClick={handleSubmit}
-                                            style={{ backgroundColor: "#66cccc",border:"#66cccc" }}
+                                            style={{ backgroundColor: "bg-blue-1000",border:"#66cccc" }}
                                         >
                                             <div className="text-white">
                                                 Register {loading && <CSpinner size="sm" />}
@@ -317,6 +311,13 @@ function Register() {
                                 </CForm>
                             </CCardBody>
                         </CCard>
+                    </CCol>
+                    <CCol md={7}>
+                        <div className="text-center mt-4">
+                            <img alt="Responsive image" src={image}  className="img-fluid" 
+                            style={{width:"500px",marginBottom:"0px"}}
+                            />
+                        </div>
                     </CCol>
                 </CRow>
             </CContainer>
