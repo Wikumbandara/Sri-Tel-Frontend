@@ -1,51 +1,65 @@
 import React from "react";
 import { CFooter, CLink } from "@coreui/react";
-import { FaComments } from "react-icons/fa"; // Importing the chat icon
+import { FaComments } from "react-icons/fa"; 
 
 function AppFooter() {
   return (
-    <CFooter style={{ 
-      display: "flex", 
-      justifyContent: "space-between", 
-      padding: "20px", 
-      backgroundColor: "#f8f9fa", // Light background for better contrast
-      boxShadow: "0 -4px 8px rgba(0,0,0,0.1)", // Adding a top shadow for the footer
-      fontSize: "14px" // Adjusting text size
-    }}>
+    <CFooter 
+      style={{ 
+        display: "flex", 
+        justifyContent: "space-between", 
+        alignItems: "center", 
+        padding: "20px 40px", 
+        backgroundColor: "#003366", 
+        color: "#fff", 
+        boxShadow: "0 -4px 12px rgba(0,0,0,0.2)", 
+        fontSize: "14px", 
+        borderTopLeftRadius: "10px", 
+        borderTopRightRadius: "10px", 
+      }}
+    >
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <CLink href="#" style={{ textDecoration: "none", color: "#ff6600", marginBottom: "5px" }}>
+        <CLink href="#" style={{ textDecoration: "none", color: "#1E90FF", marginBottom: "5px", fontWeight: 'bold' }}>
           Middleware Assignment
         </CLink>
         <span>&copy; 2024 UCSC</span>
       </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <span style={{ marginRight: "5px" }}>Powered by</span>
-        <CLink href="h#" style={{ textDecoration: "none", color: "#ff6600" }}>
-          Reactjs & Spring Boot
+      
+      {/* Contact Information */}
+      <div style={{ display: "flex", flexDirection: "column", textAlign: "right" }}>
+        <span>Contact Us: <CLink href="mailto:support@ucsc.lk" style={{ color: "#1E90FF" }}>hello@sricare.lk</CLink></span>
+        <CLink href="/privacy-policy" style={{ textDecoration: "none", color: "#1E90FF", marginTop: "5px", fontWeight: 'bold' }}>
+          Privacy Policy
         </CLink>
       </div>
 
-      {/* Chat bot icon fixed to the right side of the window */}
+      {/* Chat Icon on the Right */}
       <CLink
         href="/chat"
         style={{
           position: "fixed",
-          bottom: "20px", // Adjust this to position vertically
-          right: "20px",  // Adjust this to position horizontally
+          bottom: "30px", 
+          right: "40px",  
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#66cccc",
-          padding: "10px",
-          borderRadius: "50%", // Circular button
-          boxShadow: "0px 4px 8px rgba(0,0,0,0.1)", // Soft shadow
-          transition: "background-color 0.3s", // Smooth hover effect
-          
+          backgroundColor: "#1E90FF", 
+          padding: "12px", 
+          borderRadius: "50%", 
+          boxShadow: "0px 4px 12px rgba(0,0,0,0.3)", 
+          transition: "transform 0.3s, background-color 0.3s", 
+          cursor: "pointer"
         }}
-        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#fff"}
-        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#66cccc"}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "#fff";
+          e.currentTarget.style.transform = "scale(1.1)"; 
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "#1E90FF";
+          e.currentTarget.style.transform = "scale(1)"; 
+        }}
       >
-        <FaComments size={40} color="#ff6600" /> {/* Chat icon with primary color */}
+        <FaComments size={35} color="#003366" /> 
       </CLink>
     </CFooter>
   );
