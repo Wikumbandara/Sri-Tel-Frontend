@@ -1,61 +1,61 @@
-import React, { useState , useEffect } from 'react';
-import { CCard, CCardBody, CCardHeader, CButton, CListGroup, CListGroupItem, CCol, CRow } from '@coreui/react';
+import React, { useState, useEffect } from 'react';
+import {
+  CCard, CCardBody, CCardHeader, CButton, CListGroup, CListGroupItem, CCol, CRow
+} from '@coreui/react';
 import packageService from '../../services/packageService';
 
-
 const Packages = () => {
-  // Sample Data for Packages
   const [availablePackages, setAvailablePackages] = useState([]);
   const [subscribedPackages, setSubscribedPackages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     packageService.getPackages().then((response) => {
-      console.log("RESPONSE", response);
       setAvailablePackages(response);
     });
 
     packageService.getSubscribedPackages().then((response) => {
-      console.log("RESPONSE", response);
       setSubscribedPackages(response);
     });
   }, [loading]);
 
-
-  // Handle Package Activation/Deactivation
   const handleSubscribe = (pkg) => {
-    packageService.activatePackage({ serviceId: pkg.id }).then((response) => {
-      console.log("RESPONSE", response);
+    packageService.activatePackage({ serviceId: pkg.id }).then(() => {
       setLoading(!loading);
     });
   };
 
   const handleUnsubscribe = (pkgId) => {
-    packageService.deactivatePackage({ serviceId: pkgId }).then((response) => {
-      console.log("RESPONSE", response);
+    packageService.deactivatePackage({ serviceId: pkgId }).then(() => {
       setLoading(!loading);
-    }); 
+    });
   };
 
   return (
     <div className="container mt-5">
-      <CRow>
+      <CRow className="justify-content-center">
         {/* Available Packages */}
-        <CCol md={6}>
-          <CCard>
-            <CCardHeader>
-              Available Packages
+        <CCol md={5}>
+          <CCard className="shadow-lg mb-4">
+            <CCardHeader className="text-center bg-primary text-white">
+              <h5>Available Packages</h5>
             </CCardHeader>
             <CCardBody>
-              <CListGroup>
+              <CListGroup flush>
                 {availablePackages.map(pkg => (
-                  <CListGroupItem key={pkg.id}>
+                  <CListGroupItem key={pkg.id} className="d-flex justify-content-between align-items-center">
                     <div>
-                      <strong>{pkg.name}</strong>
-                      <p>{pkg.description}</p>
-                      <p>Price: {pkg.price}</p>
-                      <CButton style={{backgroundColor:"#66cccc",border:"#66cccc"}} onClick={() => handleSubscribe(pkg)}>Activate</CButton>
+                      <h6 className="font-weight-bold">{pkg.name}</h6>
+                      <p className="mb-1 text-muted">{pkg.description}</p>
+                      <span className="text-info">LKR {pkg.price}</span>
                     </div>
+                    <CButton
+                      className="ml-3"
+                      style={{ backgroundColor: '#66cccc', border: 'none', borderRadius: '20px' }}
+                      onClick={() => handleSubscribe(pkg)}
+                    >
+                      Activate
+                    </CButton>
                   </CListGroupItem>
                 ))}
               </CListGroup>
@@ -64,26 +64,34 @@ const Packages = () => {
         </CCol>
 
         {/* Subscribed Packages */}
-        <CCol md={6}>
-          <CCard>
-            <CCardHeader>
-              Subscribed Packages
+        <CCol md={5}>
+          <CCard className="shadow-lg mb-4">
+            <CCardHeader className="text-center bg-success text-white">
+              <h5>Subscribed Packages</h5>
             </CCardHeader>
             <CCardBody>
               {subscribedPackages.length === 0 ? (
-                <p>No packages subscribed.</p>
+                <p className="text-center text-muted">No packages subscribed yet.</p>
               ) : (
-                <CListGroup>
+                <CListGroup flush>
                   {subscribedPackages.map(pkg => (
-                    pkg.active &&
-                    <CListGroupItem key={pkg.service.id}>
-                      <div>
-                        <strong>{pkg.service.name}</strong>
-                        <p>{pkg.service.description}</p>
-                        <p>Price: {pkg.service.price}</p>
-                        <CButton color="danger" onClick={() => handleUnsubscribe(pkg.service.id)}>Deactivate</CButton>
-                      </div>
-                    </CListGroupItem>
+                    pkg.active && (
+                      <CListGroupItem key={pkg.service.id} className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 className="font-weight-bold">{pkg.service.name}</h6>
+                          <p className="mb-1 text-muted">{pkg.service.description}</p>
+                          <span className="text-info">LKR {pkg.service.price}</span>
+                        </div>
+                        <CButton
+                          color="danger"
+                          className="ml-3"
+                          onClick={() => handleUnsubscribe(pkg.service.id)}
+                          style={{ borderRadius: '20px' }}
+                        >
+                          Deactivate
+                        </CButton>
+                      </CListGroupItem>
+                    )
                   ))}
                 </CListGroup>
               )}

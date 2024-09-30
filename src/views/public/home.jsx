@@ -12,7 +12,7 @@ function Home() {
                 justifyContent: 'center', 
                 alignItems: 'center', 
                 flexDirection: 'column',
-                textAlign: 'center'
+                textAlign: 'left' 
             }}>
             
             <div 
@@ -26,40 +26,33 @@ function Home() {
                 }}>
                 
                 <div style={{ flex: 1, padding: '20px' }}>
-                    <p style={{ fontWeight: 'bold', fontSize: '70px' }}>
-                        <span style={{ color: '#1E90FF' }}>Sri</span> {/* Light blue for Sri */}
-                        <span style={{ color: '#003366' }}>Care</span> {/* Dark blue for Care */}
+                    <p style={{ fontWeight: 'bold', fontSize: '70px', fontFamily: 'Poppins, sans-serif' }}>
+                        <span style={{ color: '#003366' }}>SriCare</span> 
                     </p>
-                    <p style={{ fontWeight: 'bold', marginTop: '-20px', fontSize: '24px', color: '#333' }}> {/* Keeping text color unchanged */}
-                        Empowering Connectivity, Simplifying Care
+                    <p style={{ fontWeight: 'bold', marginTop: '-20px', fontSize: '24px', color: '#333', fontFamily: 'Poppins, sans-serif' }}>
+                        Empowering Your Communication Journey
                     </p>
-                    <p style={{ color: '#000', fontSize: '18px' }}> {/* Keeping this color unchanged */}
-                        Sri-Care is here to make your experience effortless and hassle-free. Enjoy seamless connectivity and take control of your telecom needs with just a few taps.
+                    <p style={{ color: '#000', fontSize: '18px', fontFamily: 'Poppins, sans-serif' }}>
+                    Experience effortless and efficient telecom management with SriCare.
+                    Stay connected, manage your services, and control your telecom experience with just a few clicks.
+                    Start Your Journey Today!
                     </p>
-                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                    
+                    {/* Single button with dark blue gradient */}
+                    <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '20px' }}>
                         <button 
                             type="button" 
-                            className="btn btn-primary btn-lg me-5" 
+                            className="btn btn-primary btn-lg" 
                             style={{ 
-                                borderRadius: '15px', 
-                                backgroundColor: '#1E90FF', /* Light blue for Our Services button */
-                                border: '#1E90FF', 
+                                borderRadius: '25px', 
+                                background: 'linear-gradient(to right, #003366, #0056B3)', 
+                                border: 'none', 
                                 padding: '15px 30px', 
-                                fontSize: '18px' 
+                                fontSize: '18px',
+                                color: '#fff',
+                                fontFamily: 'Poppins, sans-serif' 
                             }}>
-                            Our Services
-                        </button>
-                        <button 
-                            type="button" 
-                            className="btn btn-secondary btn-lg" 
-                            style={{ 
-                                borderRadius: '15px', 
-                                backgroundColor: '#003366', /* Dark blue for Contact Us button */
-                                border: '#003366', 
-                                padding: '15px 30px', 
-                                fontSize: '18px' 
-                            }}>
-                            Contact Us
+                            Get Started
                         </button>
                     </div>
                 </div>
