@@ -12,7 +12,7 @@ function Home() {
                 justifyContent: 'center', 
                 alignItems: 'center', 
                 flexDirection: 'column',
-                textAlign: 'left' // Align text to the left
+                textAlign: 'left' 
             }}>
             
             <div 
@@ -30,10 +30,12 @@ function Home() {
                         <span style={{ color: '#003366' }}>SriCare</span> 
                     </p>
                     <p style={{ fontWeight: 'bold', marginTop: '-20px', fontSize: '24px', color: '#333', fontFamily: 'Poppins, sans-serif' }}>
-                        Empowering Connectivity, Simplifying Care
+                        Empowering Your Communication Journey
                     </p>
                     <p style={{ color: '#000', fontSize: '18px', fontFamily: 'Poppins, sans-serif' }}>
-                        Sri-Care is here to make your experience effortless and hassle-free. Enjoy seamless connectivity and take control of your telecom needs with just a few taps.
+                    Experience effortless and efficient telecom management with SriCare.
+                    Stay connected, manage your services, and control your telecom experience with just a few clicks.
+                    Start Your Journey Today!
                     </p>
                     
                     {/* Single button with dark blue gradient */}
